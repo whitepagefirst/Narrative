@@ -30,7 +30,7 @@
 home:
   - section: welcome
     type: welcome
-    headline: White Page First & Contract First
+    headline: White Page First
     content: |
       Early validation as a core principle of sustainable software development.
 
