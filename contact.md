@@ -12,5 +12,5 @@ from you and look forward to collaborating with you on future projects.
 
 ## Get Involved
 
-If you're interested in contributing to our site or helping us improve it, we invite you to join our community on
+If you're interested in contributing to our site or helping us improve it, we invite you to [join our community](https://github.com/whitepagefirst/Narrative) on
 GitHub. We're always looking for talented individuals to help us build and maintain this site.
