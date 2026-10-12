@@ -6,8 +6,8 @@ charge of maintaining and improving this site to ensure its continued growth and
 
 ## Contact Us
 
-If you have any questions, suggestions, or feedback about our site, the best way to contact us is via our GitHub
-[organization](https://github.com/whitepagefirst). Our team of developers and contributors are always happy to hear
+If you have any questions, suggestions, or feedback about our site, the best way to contact us is via our
+[GitHub Issues](https://github.com/whitepagefirst/Narrative/issues). Our team of developers and contributors are always happy to hear
 from you and look forward to collaborating with you on future projects.
 
 ## Get Involved
