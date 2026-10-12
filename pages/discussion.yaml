@@ -1,0 +1,119 @@
+# Sub page /discussion: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: Discussion
+  drawing: balance
+  content: |
+    Benefits, objections, and where the approach has its limits.
+
+- section: benefits
+  type: text
+  layout: two-col
+  headline: Benefits
+  content: |
+    The most obvious benefit is early detection. A configuration error in the deployment is found on the first day of the
+    project, not after three months of development; a misunderstanding about a data format shows up while the contract is
+    agreed, not only during integration. A widely cited rule of thumb says that a bug found in production costs up to a
+    hundred times more than one found during development ([Boehm & Basili, 2001](https://doi.org/10.1109/2.962984)). The
+    exact factor varies from case to case, but the direction of the effect is undisputed.
+
+    A second benefit is constant deliverability. Because every successful pipeline run produces a shippable
+    system, a fixed release date is no longer needed. If a customer urgently needs a feature, it can be
+    provided as soon as it is finished.
+
+    Less technical debt also piles up. Continuous validation makes shortcuts visible immediately, and an
+    agreed contract prevents consumers from having to work around an unsuitable interface.
+
+    Finally, both approaches create transparency. The current state of the project can be seen on the
+    running test system at any time, and the contract documents bindingly what the interface does. The
+    question "What are you working on right now?" can be answered with a link instead of with the remark
+    that it's too complicated.
+
+- section: objections
+  type: text
+  layout: two-col
+  headline: Objections
+  content: |
+    Objections to this approach come up regularly, but they don't hold up on closer inspection.
+
+    ### "It costs too much at the start"
+    The most common objection concerns the initial effort. Setting up a pipeline and designing a contract
+    together does take time at the start. But this work is needed in every project; both approaches only
+    move it to the beginning, where errors are still cheap to fix. This holds for the contract in
+    particular: the interface has to be designed anyway, the only question is whether deliberately and
+    together, or on the side in the code. On top of that, the parallel development an early contract
+    enables often more than makes up for the time invested at the start.
+
+    ### "We already work agile"
+    White Page First and Contract First don't compete with Scrum, Kanban or even the waterfall model. They
+    are technical practices, not project management methods, and can be combined with any of these
+    frameworks.
+
+    ### "Our application is too complex"
+    The opposite is true: the more components, teams and interfaces a system has, the more important it is
+    to know early whether everything fits together.
+
+- section: where-it-fits
+  type: figure
+  layout: right
+  drawing: signpost
+  content: |
+    Where the approach fits, and where it has to be adapted.
+
+- section: limits
+  type: text
+  layout: two-col
+  headline: Prerequisites and limits
+  content: |
+    The approach doesn't run by itself. It requires a team that brings or builds up the necessary skills in
+    pipeline automation and has the discipline not to bypass the pipeline, even under time pressure.
+    Contract First also demands a real culture of agreement: a contract that one team writes alone and only
+    presents to the others merely reproduces the silos of code first in a new form. Rules for evolving
+    contracts are needed as well, especially for handling breaking changes and their versioning.
+
+    The demand that the main branch always goes straight to production has to be adapted to the context,
+    too. In regulated environments approval steps may be mandatory, and unfinished features have to be
+    hidden from users through suitable mechanisms such as feature toggles. The principle stays the same:
+    every state should be technically shippable there as well, even if the release is approved
+    organisationally.
+
+    Finally, Contract First in this form matters mainly for projects that provide or use interfaces. For
+    applications without external interfaces, White Page First can be applied on its own. But the idea of
+    making agreements explicit before implementing them carries there too, for example for data formats,
+    events or configuration.
+
+- section: step-by-step
+  type: figure
+  layout: left
+  drawing: path
+  content: |
+    Step by step, validated and safe.
+
+- section: conclusion
+  type: text
+  layout: one-col
+  headline: Conclusion
+  content: |
+    Many failed software projects share a common cause: validation starts too late. White Page First
+    addresses this by putting deployment at the start and building every project on a foundation that
+    already runs in production. Contract First carries the same thought over to interfaces: the jointly
+    agreed API contract comes before the implementation and is binding for everyone involved.
+
+    Both approaches are expressions of the same principle and only reach their full effect together.
+    Anchored in a pipeline that checks both deliverability and contract compliance on every run, they form
+    a general approach that holds regardless of customer, domain and technology.
+
+    The approach demands discipline and a change of thinking from everyone involved at the start. The gain
+    justifies this effort: higher quality, shorter feedback cycles, parallel work and collaboration without
+    mutual blame.
+
+    > Start small, deploy a white page, agree on the contract together and build on it: step by step, validated and safe.
+
+- section: continue
+  type: text
+  content: |
+    Next: [Sources and further reading](/sources)
+
+    [Back to the overview](/)

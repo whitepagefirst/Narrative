@@ -1,0 +1,88 @@
+# Sub page /why-projects-fail: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: Why software projects fail
+  drawing: bridge
+  content: |
+    Most of the problems that sink a project would be cheap to fix on its first day. They become expensive because they are found late.
+
+- section: scenario
+  type: text
+  layout: one-col
+  headline: A familiar scenario
+  content: |
+    A scenario that surprises hardly anyone in software development: a complex system is built over months.
+    The team works hard, features appear, the code grows. Shortly before the planned release it turns out
+    that the components don't work together, that the deployment pipeline isn't ready, and that frontend and
+    backend assumed different interfaces. Critical errors only surface now, the budget is spent, the deadline
+    can't be met.
+
+    What stands out is that none of these errors would have been hard to fix on its own. A misconfigured
+    deployment or an unsuitable response format could have been corrected with little effort on the first day
+    of the project. Such errors only become expensive because they are found late, when a lot of work already
+    rests on wrong assumptions.
+
+    An approach that combines White Page First and Contract First avoids this pattern systematically. It pulls
+    both critical integration points, deployment and interfaces, to the start of a project and joins them in
+    a build and deployment pipeline into one continuous way of working. It applies regardless of customer,
+    domain and technology.
+
+- section: deadline
+  type: figure
+  layout: right
+  drawing: hourglass
+  content: |
+    Shortly before the release, the time is gone.
+
+- section: findings
+  type: text
+  layout: two-col
+  headline: The empirical findings
+  content: |
+    The success rate of software projects has been studied for years, and the picture remains sobering. The
+    figures were collected in different ways and can't be compared directly. They agree on one point, though:
+    a considerable part of the work invested never reaches production.
+
+    - **12 %** of all projects fail completely ([PMI, 2024](https://www.pmi.org/about/press-media/press-releases/pmi-champions-a-new-era-of-project-success))
+    - **40 %** deliver only mixed results ([PMI, 2024](https://www.pmi.org/about/press-media/press-releases/pmi-champions-a-new-era-of-project-success))
+    - **80 %** of AI projects fail, about twice the rate of IT projects without AI ([RAND Corporation, 2024](https://www.rand.org/pubs/research_reports/RRA2680-1.html))
+    - **67 %** of data leaders could not move even half of their GenAI pilots into production ([Informatica, 2025](https://www.informatica.com/about-us/news/news-releases/2025/01/20250128-global-data-leaders-seek-to-harness-the-power-of-genai-for-ai-driven-success.html))
+    - **42 %** of companies abandoned most of their AI initiatives before production, up from 17 % a year earlier ([S&P Global Market Intelligence, 2025](https://www.spglobal.com/market-intelligence/en/news-insights/research/ai-experiences-rapid-adoption-but-with-mixed-outcomes-highlights-from-vote-ai-machine-learning))
+
+- section: linear
+  type: figure
+  layout: center
+  drawing: linear
+  content: |
+    Develop, integrate, test, ship: every step rests on assumptions that are only checked at the end.
+
+- section: postponed-integration
+  type: text
+  layout: two-col
+  headline: The postponed integration point
+  content: |
+    Traditional development often follows a linear pattern: develop first, then integrate, then test and
+    finally ship. The order feels intuitive, but it carries a structural risk. Every step builds on the
+    assumptions of the previous ones, yet these assumptions are only checked at the end.
+
+    This shows most clearly in two places. The first is deployment: the infrastructure for the release
+    (environments, permissions, pipelines, configuration) is often treated as a downstream task and only
+    tackled once the product is "done". The second are the interfaces between systems and teams. They
+    usually emerge as a by-product of the backend implementation, and whether they suit their consumers only
+    becomes clear once those start integrating.
+
+    In both cases an integration point, where different parts of a project have to come together, is put off
+    until the very end. This doesn't avoid problems. It only moves them into the phase where fixing them is
+    most expensive.
+
+    On top of that, under the pressure of an approaching deadline, teams tend to reach for quick workarounds.
+    Technical debt piles up exactly where stability would matter most.
+
+- section: continue
+  type: text
+  content: |
+    Next: [White Page First](/white-page-first)
+
+    [Back to the overview](/)

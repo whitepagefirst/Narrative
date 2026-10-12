@@ -1,0 +1,347 @@
+# Section types (type / layout):
+#   welcome                     first screen of a page
+#   intro       upperRight | middleLeft | lowerRight
+#                               short text with a //01 marginal number, listed in the navigation
+#   reader      one-col | two-col | split
+#                               running text; split keeps the headline in view next to long texts
+#   statement                   one sentence, set large; the words light up while scrolling
+#   steps                       a sequence; write the content as an ordered markdown list,
+#                               start each item with a **bold title**
+#   facts                       big numbers; list them under `items` with `value` and `label`,
+#                               whole numbers from 10 up count up when they come into view
+#   drawing     right | left    text next to a line drawing that draws itself; `drawing: <name>`
+#   chapter                     chapter opener with a stroke across the page, optional `drawing`,
+#                               listed in the navigation
+#   contributor                 contributors of a GitHub `repository`
+#
+# Sub pages for reading live in pages/<name>.yaml and are served at /<name>. They use:
+#   hero                        headline, lead and optional `drawing`, drawn once on load
+#   text        one-col | two-col
+#                               paragraphs with an optional headline, listed in the navigation
+#   figure      left | center | right
+#                               a `drawing` between the paragraphs, the content is its caption
+#
+# Drawings are the SVG files in src/lib/drawings of the website repository: balance, book, bridge, contract, network, page,
+# path, pipeline, stack, venn, container, hourglass, linear, bin, puzzle,
+# parallel, bridge-joined, funnel, checklist, signpost. Add your own there as black and white line art: fill="none" and
+# stroke="currentColor"; class="accent" draws a heavier line, class="paper" fills a shape with the
+# page colour so it covers the lines behind it.
+
+home:
+  - section: welcome
+    type: welcome
+    headline: White Page First & Contract First
+    content: |
+      Early validation as a core principle of sustainable software development.
+
+  - section: summary
+    type: intro
+    layout: upperRight
+    headline: Summary
+    content: |
+      Software projects rarely fail because of individual programming errors. Far more often they fail because
+      central integration points are put off until the end. Two approaches tackle this pattern at different
+      places. White Page First Development (WPF) puts deployment at the start of a project and builds every
+      further feature on a foundation that already runs in production. Contract First moves the design of
+      interfaces ahead of their implementation and makes the jointly agreed API contract the binding reference
+      for everyone involved.
+
+      Both are expressions of the same principle. Only together, anchored in an automated pipeline, do they
+      reach their full effect as a general way of running software projects.
+
+  - section: principle
+    type: statement
+    headline: The principle
+    content: |
+      Whatever carries all further work is defined and secured first.
+
+  - section: introduction
+    type: intro
+    layout: middleLeft
+    headline: Introduction
+    content: |
+      A complex system is built over months. Shortly before the release it turns out that the components don't
+      work together, the deployment pipeline isn't ready, and frontend and backend assumed different interfaces.
+
+      None of these errors would have been hard to fix on the first day. They become expensive because they are
+      found late, when a lot of work already rests on wrong assumptions.
+
+  - section: why-projects-fail
+    type: chapter
+    headline: Why software projects fail
+    content: |
+      Most problems that sink a project are cheap to fix on day one. [Read the chapter](/why-projects-fail)
+
+  - section: findings
+    type: facts
+    headline: The empirical findings
+    content: |
+      The figures were collected in different ways and can't be compared directly. They agree on one point: a
+      considerable part of the work invested never reaches production.
+    items:
+      - value: '12%'
+        label: of all projects fail completely
+        source: PMI, 2024
+        link: 'https://www.pmi.org/about/press-media/press-releases/pmi-champions-a-new-era-of-project-success'
+      - value: '40%'
+        label: deliver only mixed results
+        source: PMI, 2024
+        link: 'https://www.pmi.org/about/press-media/press-releases/pmi-champions-a-new-era-of-project-success'
+      - value: '80%'
+        label: of AI projects fail, about twice the rate of IT projects without AI
+        source: RAND Corporation, 2024
+        link: 'https://www.rand.org/pubs/research_reports/RRA2680-1.html'
+      - value: '67%'
+        label: of data leaders could not move even half of their GenAI pilots into production
+        source: Informatica, 2025
+        link: 'https://www.informatica.com/about-us/news/news-releases/2025/01/20250128-global-data-leaders-seek-to-harness-the-power-of-genai-for-ai-driven-success.html'
+      - value: '42%'
+        label: of companies abandoned most of their AI initiatives before production, up from 17 % a year earlier
+        source: S&P Global Market Intelligence, 2025
+        link: 'https://www.spglobal.com/market-intelligence/en/news-insights/research/ai-experiences-rapid-adoption-but-with-mixed-outcomes-highlights-from-vote-ai-machine-learning'
+
+  - section: postponed-integration
+    type: drawing
+    layout: left
+    drawing: bridge
+    headline: The postponed integration point
+    content: |
+      Traditional development runs in a line: develop, integrate, test, ship. Every step builds on assumptions
+      that are only checked at the end.
+
+      Two integration points suffer most: deployment, left for when the product is "done", and the interfaces
+      between systems and teams, which emerge as a by-product of the backend. The problems aren't avoided, only
+      moved to where fixing them costs most.
+
+  - section: white-page-first
+    type: chapter
+    headline: White Page First
+    drawing: page
+    content: |
+      Start with the smallest possible product, fully built, tested and delivered.
+      [Read the chapter](/white-page-first)
+
+  - section: basic-idea
+    type: drawing
+    layout: right
+    drawing: book
+    headline: The basic idea
+    content: |
+      A project starts with a "white page": the smallest possible product, in the simplest case a page saying
+      "Hello World", fully built, checked and delivered to its target environment by an automated pipeline.
+      Every feature after that is added to a foundation that already runs.
+
+      For a book it would mean securing printing and delivery before the first chapter is written.
+
+  - section: two-principles
+    type: steps
+    headline: Two principles
+    content: |
+      1. **Create nothing permanent that has to be thrown away later.** Cheap checks run before expensive
+         builds, so a faulty artifact never ends up in the registry.
+      2. **Start with the release.** Deployment is the first step, not the last. Without it, no work reaches
+         anyone.
+
+  - section: contract-first
+    type: chapter
+    headline: Contract First
+    drawing: contract
+    content: |
+      Agree on the interface before anyone implements it. [Read the chapter](/contract-first)
+
+  - section: code-to-contract
+    type: reader
+    layout: split
+    headline: From code first to contract first
+    content: |
+      In the code-first approach the API is implemented first, and an OpenAPI document is generated from the
+      code afterwards. The specification is a by-product of the implementation, not its blueprint.
+
+      Contract First reverses the order. Everyone involved designs the API contract together and records it as
+      an [OpenAPI](https://spec.openapis.org/oas/latest.html) document; only then is code written that fulfils it.
+
+  - section: api-connects-teams
+    type: statement
+    headline: An API connects teams
+    content: |
+      An API connects not only systems, but also teams. Everyone who uses it should take part in its design.
+
+  - section: binding-reference
+    type: drawing
+    layout: left
+    drawing: network
+    headline: The contract as binding reference
+    content: |
+      The agreed contract becomes the *single source of truth* for providers and consumers. Teams work in
+      parallel: the frontend against a mock server generated from the contract, the backend on the
+      implementation, quality assurance on the tests.
+
+      Design errors surface while fixing them takes a few lines of YAML, and stubs, clients, mocks, tests and
+      documentation can all be generated from the contract.
+
+  - section: synthesis
+    type: chapter
+    headline: Synthesis
+    drawing: venn
+    content: |
+      Two expressions of one principle. [Read the chapter](/synthesis)
+
+  - section: shared-structure
+    type: reader
+    layout: split
+    headline: Pulled to the start and secured
+    content: |
+      White Page First settles at the start *how* a product gets into production. Contract First settles at
+      the start *how* systems and teams communicate. Both pull an integration point that is usually left to the
+      end to the beginning.
+
+      Each covers the other's blind spot: White Page First makes every version shippable, Contract First makes
+      the components fit together. With the contract checked in the pipeline on every run, both risks are
+      addressed at once.
+
+  - section: implementation
+    type: chapter
+    headline: Implementation
+    drawing: pipeline
+    content: |
+      The pipeline as a living contract. [Read the chapter](/pipeline)
+
+  - section: pipeline-stages
+    type: steps
+    headline: The order of the stages
+    content: |
+      Cheap checks that need no built artifact run first; expensive steps follow once their preconditions are
+      secured.
+
+      1. **Preparation.** Identical environment and dependencies for every run.
+      2. **Static analysis and unit tests.** Linters, security scanners, unit tests and the contract linter
+         fail the pipeline early and cheaply.
+      3. **Build.** A reproducible build whose result is always a container image.
+      4. **End-to-end, contract and security tests.** Run against the built image, before it is published.
+      5. **Publish to the registry.** Only images that passed everything, versioned and together with their
+         API contract.
+      6. **Continuous deployment.** Every successful run goes to production automatically.
+      7. **Smoke tests.** A last check that the release is running where it was deployed.
+
+  - section: test-then-push
+    type: statement
+    headline: Test, then push
+    content: |
+      Never push a broken or untested image to the registry.
+
+  - section: built-container
+    type: drawing
+    layout: right
+    drawing: container
+    headline: Test the image you ship
+    content: |
+      The container image is what gets deployed, together with its operating system, dependencies and
+      configuration. Test that image, not just the source code, and only push it afterwards. The registry
+      becomes a quality gate: only verified containers get in.
+
+  - section: incremental-growth
+    type: drawing
+    layout: left
+    drawing: stack
+    headline: Start small, then grow
+    content: |
+      A project begins with a minimal contract, an application that does nothing but fulfil it, and a pipeline
+      that delivers both. From then on every feature extends the contract first, is developed in parallel,
+      tested against the contract and shipped.
+
+      Traditionally: *develop → document the API → integrate → test → hope → deploy*. Combined: *agree on the
+      contract and deploy minimally → develop in parallel → test against the contract → deploy the extension →
+      repeat*.
+
+  - section: discussion
+    type: chapter
+    headline: Discussion
+    drawing: balance
+    content: |
+      Benefits, objections, and where the approach has its limits. [Read the chapter](/discussion)
+
+  - section: benefits
+    type: facts
+    headline: Finding problems early
+    content: |
+      A configuration error is found on the first day of the project, not after three months of development.
+      A misunderstanding about a data format shows up while the contract is agreed, not during integration.
+    items:
+      - value: '100×'
+        label: what a bug found in production can cost compared to one found during development, by a widely cited rule of thumb
+        source: Boehm & Basili, 2001
+        link: 'https://doi.org/10.1109/2.962984'
+
+  - section: objections
+    type: reader
+    layout: two-col
+    headline: Objections and limits
+    content: |
+      ### "It costs too much at the start"
+      The work is needed in every project. Both approaches only move it to the start, where errors are still
+      cheap to fix.
+
+      ### "We already work agile"
+      These are technical practices, not project management methods. They combine with Scrum, Kanban or even
+      waterfall.
+
+      ### "Our application is too complex"
+      The more components, teams and interfaces, the more it matters to know early whether everything fits.
+
+      ### What it takes
+      Skills in pipeline automation, the discipline not to bypass the pipeline under pressure, and a real
+      culture of agreeing on contracts together.
+
+  - section: conclusion
+    type: chapter
+    headline: Conclusion
+    drawing: path
+
+  - section: conclusion-text
+    type: reader
+    layout: one-col
+    headline: Validation that starts on day one
+    content: |
+      Many failed software projects share one cause: validation starts too late. White Page First puts
+      deployment at the start, Contract First puts the agreed interface before the implementation. Anchored in
+      a pipeline that checks deliverability and contract compliance on every run, they form an approach that
+      holds regardless of customer, domain and technology.
+
+  - section: start-small
+    type: statement
+    headline: Start small
+    content: |
+      Start small, deploy a white page, agree on the contract together and build on it: step by step,
+      validated and safe.
+
+  - section: read-on
+    type: reader
+    layout: two-col
+    headline: Read on
+    content: |
+      The full article, chapter by chapter.
+
+      - [Why software projects fail](/why-projects-fail): the scenario, the figures and the postponed
+        integration point.
+      - [White Page First](/white-page-first): the basic idea and its two principles.
+      - [Contract First](/contract-first): from code first to a contract as binding reference.
+      - [Synthesis](/synthesis): why the two approaches belong together.
+      - [Implementation](/pipeline): CI/CD, the order of the stages, testing the image you ship.
+      - [Discussion](/discussion): benefits, objections, limits and the conclusion.
+      - [Sources and further reading](/sources): every reference, and studies on the principle.
+
+contact:
+  - section: contact
+    type: reader
+    layout: one-col
+    headline: Please contact us via github
+    content:
+      $ref: 'contact.md'
+
+  - section: contributors
+    type: contributor
+    headline: Contributors
+    repository: 'whitepagefirst/Narrative'
+    content: |
+      If you're interested in contributing to WPF and helping to improve it, we invite you to join our community on GitHub. 
+      We're always looking for talented individuals to help us build and maintain the information provided.

@@ -1,0 +1,175 @@
+# Sub page /pipeline: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: Implementation
+  drawing: pipeline
+  content: |
+    The pipeline as a living contract.
+
+- section: ci-cd
+  type: text
+  layout: two-col
+  headline: Integration, delivery, deployment
+  content: |
+    A CI/CD pipeline is an automated system that integrates code changes and delivers software. *Continuous
+    integration* means that the changes of all developers are merged into a shared repository frequently,
+    often several times a day. *CD* stands for one of two things: *continuous delivery* keeps the code in a
+    deployable state at all times, *continuous deployment* goes one step further and releases every change to
+    production automatically.
+
+    A pipeline consists of automated stages that every change has to pass before it reaches users. If one
+    stage fails, the pipeline stops and tells the developers to fix the problem before anything moves on.
+    This catches errors early, reduces integration problems and keeps the quality standards of the whole team.
+
+    Instead of building, testing and deploying by hand, which can take hours or days, a team pushes a change
+    and it flows through the pipeline into production within minutes. Releases get faster, manual errors
+    rarer, and every deployment is made with more confidence.
+
+- section: cheap-checks-first
+  type: figure
+  layout: left
+  drawing: funnel
+  content: |
+    Cheap checks first: only what passes moves on.
+
+- section: stages
+  type: text
+  layout: one-col
+  headline: The order of the stages
+  content: |
+    Both approaches come together in the automated pipeline. Its stages consistently follow the first
+    principle: cheap checks that need no built artifact run first; expensive steps only follow once their
+    preconditions are secured.
+
+    ### Preparation
+    The environment is set up and dependencies are installed. This ensures every run
+    happens under identical conditions. Without this care, hard-to-trace, sporadic errors appear that
+    can't be reproduced.
+
+    ### Static analysis and unit tests
+    Linters check code style and typical mistakes, security scanners
+    look for known vulnerabilities, and unit tests secure the behaviour of individual units of code.
+    Contract First comes in here too: a contract linter checks the API contract for validity, for agreed
+    conventions and for breaking changes against the last published version. If someone removes a
+    required field from a response that consumers already use, it shows up here, minutes after the
+    change and not weeks later in another team. Running these checks before the build makes the pipeline
+    fail early and cheaply.
+
+    ### Build
+    Only now is the application built. The build has to be reproducible and must not depend on
+    external, changing sources while it runs. Otherwise phantom errors appear: the same code base works
+    one day and not the next. What "build" means depends on the technology: C is compiled, TypeScript
+    transpiled, PHP needs its dependencies installed. Whatever the stack, the result should always be a
+    container image ready for deployment.
+
+    ### End-to-end, contract and security tests
+    The built but not yet published application goes through
+    end-to-end tests and dynamic security checks, run against the built container image itself. Frontends
+    add visual regression tests that compare screenshots of the interface against approved baselines. The system has to prove itself in realistic scenarios,
+    for example when an automated test simulates a user signing in, entering data and placing an order.
+    Contract tests additionally check that the running application actually honours the API contract,
+    for every endpoint, every response schema and every error code. This closes the loop between design
+    and implementation.
+
+    ### Publish to the registry
+    Only versions that passed all previous stages are stored as an artifact
+    in the registry, tagged with their version. The API contract is published together with the artifact. That way it is clear for every
+    version which interface it offers, and consumers can derive their clients and mocks from it. Going
+    back to a working version is possible at any time.
+
+    ### Continuous deployment
+    After every successful run the result is shipped automatically, and the
+    main branch always goes straight to production. Releases stop being rare, risky big events and become
+    routine. The pipeline itself deploys, for example to a Kubernetes cluster (push-based), instead of a
+    separate tool pulling changes from the repository.
+
+    ### Smoke tests
+    A last, short check confirms that the deployed application is running and responding
+    as expected in its live environment.
+
+- section: test-then-push
+  type: figure
+  layout: right
+  drawing: container
+  content: |
+    Test the image, then push it to the registry.
+
+- section: built-container
+  type: text
+  layout: two-col
+  headline: Test the image you ship
+  content: |
+    > Never push a broken or untested image to the registry.
+
+    Once an application is built into a container image, that image is the unit that gets deployed. It holds
+    not only the code, but also the operating system, runtime dependencies, environment variables and
+    configuration that will exist in production. Testing the finished container rather than the raw source
+    code validates the complete artifact, including problems that only the packaging introduces: missing
+    dependencies, wrong file permissions, environment-specific configuration.
+
+    Timing matters just as much. As soon as an image is in the registry, other systems and team members may
+    start using it, especially with automated deployments. A broken image can cascade into failed
+    deployments, broken development environments or even production outages. Testing first and pushing
+    second turns the registry into a quality gate: only verified, working containers get in.
+
+- section: characteristics
+  type: text
+  layout: one-col
+  headline: What every pipeline has in common
+  content: |
+    - **Sequential stages.** Each stage has to finish successfully before the next one starts.
+    - **Quality gates.** Unit tests are mandatory; end-to-end, visual regression and smoke tests apply
+      wherever they fit the service.
+    - **Containers as the unit of delivery.** Every application is shipped as a container image.
+    - **A central registry.** Images are stored and versioned in one place, so any earlier version can be
+      deployed again.
+    - **Validation after deployment.** Smoke tests confirm that the release actually works where it runs.
+
+- section: quality-gates
+  type: figure
+  layout: left
+  drawing: checklist
+  content: |
+    Every stage is a quality gate.
+
+- section: minimal-start
+  type: text
+  layout: two-col
+  headline: The minimal start
+  content: |
+    A project following this approach deliberately starts small. If it provides or uses interfaces, it
+    begins with a minimal API contract that all teams involved design together, in the simplest case a
+    single health or "Hello World" endpoint. Alongside it comes an application that does nothing but fulfil
+    this contract, and a pipeline that checks contract and application, builds them and delivers them to the
+    staging or production system.
+
+    This looks trivial, but it isn't. With this first run the deployment pipeline is proven, permissions are
+    sorted out and the workflow is established. At the same time the team has already practised agreeing on
+    interfaces once, and contract linting and contract tests are anchored in the pipeline before the first
+    line of business code is written. This ensures that everything developed next can actually reach
+    production, and that everyone involved knows how to agree on changes to the interface together.
+
+- section: incremental-growth
+  type: text
+  layout: two-col
+  headline: Incremental growth
+  content: |
+    On this foundation the system grows in small steps. For every new feature the contract is extended and
+    agreed first. Then providers and consumers develop in parallel, the pipeline checks the implementation
+    against the contract, and the result is shipped. Every one of these cycles ends with a working system
+    that runs in production. There is no longer a "big bang" at the end of the project, where it shows for
+    the first time whether everything fits together.
+
+    In short: traditionally the sequence is *develop → document the API → integrate → test → hope →
+    deploy*. Combining both approaches, it becomes *agree on the contract and deploy minimally → develop in
+    parallel → test against the contract → deploy the extension → repeat*. The difference may look small,
+    but its effects are fundamental: you don't build on assumptions, you build on a tested foundation.
+
+- section: continue
+  type: text
+  content: |
+    Next: [Discussion](/discussion)
+
+    [Back to the overview](/)

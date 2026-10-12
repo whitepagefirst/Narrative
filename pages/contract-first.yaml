@@ -1,0 +1,97 @@
+# Sub page /contract-first: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: Contract First
+  drawing: contract
+  content: |
+    Agree on the interface before anyone implements it.
+
+- section: code-to-contract
+  type: text
+  layout: two-col
+  headline: From code first to contract first
+  content: |
+    While White Page First secures the path to production, Contract First focuses on the interfaces between
+    systems. Modern applications rarely consist of a single building block; they are made of services,
+    frontends, mobile apps and third-party systems that talk to each other through APIs. The quality of these
+    interfaces largely decides whether a distributed system works as a whole.
+
+    The [OpenAPI Specification](https://spec.openapis.org/oas/latest.html) (originally Swagger) has become the standard for describing such interfaces.
+    It captures an API in machine-readable form, usually in YAML or JSON: endpoints and operations, input and
+    output parameters, authentication methods and error cases. Because the specification is language
+    independent, it suits APIs in any programming language and can be processed by a broad ecosystem of tools.
+
+    In practice, though, this description was long written after the fact. In the so-called code-first
+    approach, backend developers implement the API and annotate their code, and tools such as Swashbuckle for
+    ASP.NET Core or SpringDoc for Java then generate an OpenAPI document from it. In this model the
+    specification is a by-product of the implementation, not its blueprint.
+
+    Contract First reverses this order. First, everyone involved designs the API contract together and
+    records it as an OpenAPI document; only then is code written that fulfils this contract. Behind this is a
+    fundamental insight.
+
+    > An API connects not only systems, but also teams. Everyone who uses it should take part in its design.
+
+- section: teams-fit
+  type: figure
+  layout: right
+  drawing: puzzle
+  content: |
+    An API connects teams, not only systems.
+
+- section: code-first-consequences
+  type: text
+  layout: two-col
+  headline: The consequences of code first
+  content: |
+    The weaknesses of the code-first approach are strikingly similar to those of the linear project. Because
+    the backend team shapes the interface on its own, silos form: frontend and mobile teams, quality
+    assurance and product owners have hardly any influence on the design, but have to live with its
+    consequences. Design errors only show once the implementation is finished, so correcting them is
+    expensive. Since the API emerges during backend development, it often mirrors the internal structure of
+    the backend rather than the needs of its consumers. Finally, consumers can only start once the backend is
+    done. Development cycles line up one after another, and every delay propagates.
+
+    The problem is not only technical but also cultural. Where one side alone decides the "truth" about the
+    interface, everyone else becomes a passive recipient. Inconsistent schemas, delayed integration and lost
+    agility are the visible consequences. Less visible, but just as harmful, is a culture of mutual blame
+    between the teams that provide an API and those that use it.
+
+- section: parallel-work
+  type: figure
+  layout: center
+  drawing: parallel
+  content: |
+    Once the contract is agreed, frontend, backend and quality assurance work in parallel.
+
+- section: binding-reference
+  type: text
+  layout: two-col
+  headline: The contract as binding reference
+  content: |
+    With Contract First the API contract becomes the binding reference, the *single source of truth*, for
+    providers and consumers. It is not a documentation artifact trailing behind the implementation, but a
+    design document and a shared commitment.
+
+    Once the contract exists, teams can work in parallel: the frontend develops against a mock server
+    generated from the contract, the backend implements the agreed specification, and quality assurance
+    writes tests before the implementation is finished.
+
+    Deliberate design before implementation also leads to better interfaces: consistent naming, well
+    thought-out resource modelling, correctly used status codes and clearly described error handling,
+    because implementation details don't get in the way of the design. Design errors surface in a phase
+    where correcting them takes a few lines in a YAML document. And server stubs, client libraries, mock
+    servers, automated tests and documentation can all be generated from the contract.
+
+    Modern frameworks go one step further: they read the OpenAPI document directly and take care of
+    routing, validation and serialisation according to the contract. The development team then only
+    implements the business logic, and contract and implementation can't drift apart in the first place.
+
+- section: continue
+  type: text
+  content: |
+    Next: [Synthesis](/synthesis)
+
+    [Back to the overview](/)

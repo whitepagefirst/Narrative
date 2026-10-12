@@ -1,0 +1,51 @@
+# Sub page /synthesis: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: Synthesis
+  drawing: venn
+  content: |
+    Two expressions of one principle.
+
+- section: shared-structure
+  type: text
+  layout: two-col
+  headline: Pulled to the start and secured
+  content: |
+    Put side by side, the two approaches reveal a shared structure. White Page First settles at the start of
+    a project *how* a product gets into production. Contract First settles at the start *how* systems and
+    teams communicate. In both cases an integration point that the linear approach puts off until the end is
+    pulled to the beginning and secured there.
+
+    The kinship is clearest in the two principles of White Page First. Creating nothing permanent that has
+    to be thrown away later applies to interfaces in particular. An API built without agreement with its
+    consumers will very likely have to be rebuilt, and with it the implementation, tests and clients. A
+    contract, on the other hand, is cheap to change as long as no code depends on it. Starting with the
+    release has its counterpart in starting with the contract: just as the first deployment secures the
+    delivery path, the first agreed contract secures the understanding between everyone involved.
+
+- section: halves-meet
+  type: figure
+  layout: center
+  drawing: bridge-joined
+  content: |
+    Pulled to the start, both halves meet.
+
+- section: complement
+  type: text
+  layout: two-col
+  content: |
+    The two approaches also complement each other in effect. White Page First alone ensures that every
+    version can be shipped, but doesn't guarantee that the shipped components fit together. Contract First
+    alone creates a shared understanding of the interface, but says nothing about whether the
+    implementation actually honours the contract or can be run in production. Only in combination, when the
+    contract is part of the pipeline and checked against the implementation on every run, does an approach
+    emerge that addresses both risks at once.
+
+- section: continue
+  type: text
+  content: |
+    Next: [Implementation: the pipeline](/pipeline)
+
+    [Back to the overview](/)

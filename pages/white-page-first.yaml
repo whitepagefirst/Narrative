@@ -1,0 +1,76 @@
+# Sub page /white-page-first: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: White Page First
+  drawing: page
+  content: |
+    Start with the smallest possible product, fully built, tested and delivered.
+
+- section: basic-idea
+  type: text
+  layout: two-col
+  headline: The basic idea
+  content: |
+    White Page First Development reverses the linear order. The name describes the starting point: at the
+    beginning there is a "white page", the smallest possible product that is nevertheless fully built,
+    checked and delivered to the target environment. Only once this path works does the actual development
+    of features begin.
+
+    A comparison from publishing makes the idea clear. For a book it would mean securing printing and
+    delivery before the first chapter is written. That sounds trivial, but it removes a whole series of
+    risks: once the delivery path is proven, every finished chapter can appear right away, and at the end
+    there is no doubt left whether the work will reach its readers at all.
+
+    In software development this means: a project starts with a minimal application, in the simplest case
+    an HTML page showing "Hello World", in general the smallest and cheapest feature of the domain. This
+    application is delivered to the target environment right away through an automated pipeline. All further
+    features are then added step by step on this foundation.
+
+- section: printing-first
+  type: figure
+  layout: left
+  drawing: book
+  content: |
+    Printing and delivery first, the chapters follow.
+
+- section: two-principles
+  type: text
+  layout: one-col
+  headline: Two principles
+  content: |
+    White Page First rests on two principles that shape the whole approach, well beyond the pipeline.
+
+    ### Create nothing permanent that has to be thrown away later
+    Work that will foreseeably have to be
+    redone wastes resources and raises the risk that faulty intermediate results get reused. An example
+    from the pipeline: if a product has to meet coding standards but the linter only runs after an
+    expensive build, the built image has to be discarded when the check fails. It was not only built in
+    vain, the risk also grows that a faulty artifact ends up in a registry. Consequently, static checks
+    and unit tests run before the build; end-to-end tests follow afterwards and check the built, but not
+    yet published application.
+
+- section: nothing-thrown-away
+  type: figure
+  layout: right
+  drawing: bin
+  content: |
+    Nothing permanent that has to be thrown away later.
+
+- section: start-with-release
+  type: text
+  layout: one-col
+  content: |
+    ### Start with the release
+    Deployment is not the last but the first step of a project. Without a
+    working deployment all further work is worthless, because it reaches no one. If it works from the
+    start, every finished feature can be used immediately, and the progress of the project can be read
+    from the running system at any time.
+
+- section: continue
+  type: text
+  content: |
+    Next: [Contract First](/contract-first)
+
+    [Back to the overview](/)
