@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 90 400 210" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	<ellipse cx="34" cy="190" rx="9" ry="21" />
+	<path d="M34 169 L300 170" />
+	<path d="M34 211 L300 210" />
+	<path d="M92 162 L92 218 M102 162 L102 218" />
+	<path d="M184 162 L184 218 M194 162 L194 218" />
+	<path class="paper" d="M300 136 L372 138 L370 244 L300 242 Z" />
+	<path d="M314 156 L356 156 M314 172 L350 172" />
+	<path class="accent" d="M52 124 L60 132 L76 114" />
+	<path class="accent" d="M140 124 L148 132 L164 114" />
+	<path class="accent" d="M234 124 L242 132 L258 114" />
+	<path d="M58 266 L262 266" />
+	<path d="M248 256 L262 266 L248 276" />
+</svg>

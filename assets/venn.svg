@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 80 320 240" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	<path d="M160 100 C 216 98, 262 146, 260 202 C 258 258, 214 302, 158 300 C 104 298, 60 254, 62 198 C 64 144, 106 102, 160 100 Z" />
+	<path d="M242 98 C 296 100, 340 146, 338 200 C 336 256, 292 302, 238 302 C 182 302, 138 256, 140 200 C 142 144, 186 96, 242 98 Z" />
+	<path class="accent" d="M190 164 L212 142" />
+	<path class="accent" d="M180 200 L222 158" />
+	<path class="accent" d="M180 236 L222 194" />
+	<path class="accent" d="M190 254 L212 232" />
+</svg>

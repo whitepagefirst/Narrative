@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	<path class="paper" d="M150 52 L318 66 L302 300 L134 288 Z" />
+	<path class="paper" d="M118 76 L284 80 L282 318 L114 314 Z" />
+	<path class="paper" d="M86 102 L254 96 L262 334 L94 340 Z" />
+	<path d="M118 150 C 150 148, 190 146, 226 145" />
+	<path d="M119 178 C 160 176, 196 175, 228 174" />
+	<path d="M120 206 C 150 205, 180 204, 206 203" />
+	<path d="M121 244 C 160 243, 196 242, 230 241" />
+	<path d="M122 272 C 150 271, 170 271, 190 270" />
+	<path class="accent" d="M212 97 L213 168 L226 154 L240 167 L238 96" />
+</svg>

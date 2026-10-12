@@ -6,6 +6,8 @@ here is live on the site a few minutes after it is pushed to `main`.
 
 - `wpf.yaml` holds the overview page (`home`) and the contact page. Its header lists every section type.
 - `pages/<name>.yaml` are the reading pages, served at `/<name>`.
+- `assets/<name>.svg` are the line drawings, used in the YAML as `drawing: <name>`. The website inlines them
+  into the page, so they can be drawn stroke by stroke.
 - `contact.md` is included from the YAML with `$ref`; other Markdown files can be included the same way.
 
 To preview edits before pushing, run the website with `CONTENT_BASE_URL=../public/Narrative npm run dev`.

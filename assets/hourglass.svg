@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 40 200 320" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	<path class="accent" d="M118 60 L282 60" />
+	<path class="accent" d="M118 340 L282 340" />
+	<path d="M126 60 L126 340 M274 60 L274 340" />
+	<path d="M142 60 C 142 150, 194 168, 194 200 C 194 232, 142 250, 142 340" />
+	<path d="M258 60 C 258 150, 206 168, 206 200 C 206 232, 258 250, 258 340" />
+	<path d="M174 156 C 188 164, 212 164, 226 156" />
+	<path d="M200 204 L200 296" />
+	<path d="M152 340 C 170 302, 230 302, 248 340" />
+</svg>

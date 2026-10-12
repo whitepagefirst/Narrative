@@ -21,7 +21,7 @@
 #   figure      left | center | right
 #                               a `drawing` between the paragraphs, the content is its caption
 #
-# Drawings are the SVG files in src/lib/drawings of the website repository: balance, book, bridge, contract, network, page,
+# Drawings are the SVG files in assets/, used by their name without .svg: balance, book, bridge, contract, network, page,
 # path, pipeline, stack, venn, container, hourglass, linear, bin, puzzle,
 # parallel, bridge-joined, funnel, checklist, signpost. Add your own there as black and white line art: fill="none" and
 # stroke="currentColor"; class="accent" draws a heavier line, class="paper" fills a shape with the

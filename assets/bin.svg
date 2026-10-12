@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 40 220 320" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	<path class="paper" d="M182 72 L204 62 L228 74 L238 98 L230 120 L208 132 L184 126 L168 106 L172 86 Z" />
+	<path d="M182 72 L198 94 L228 74 M198 94 L208 132 M168 106 L198 94 L238 98" />
+	<path class="accent" d="M238 106 C 260 120, 266 144, 258 164" />
+	<path d="M120 172 L280 172" />
+	<path d="M130 172 L150 340 L250 340 L270 172" />
+	<path d="M172 192 L178 320 M200 192 L200 320 M228 192 L222 320" />
+</svg>

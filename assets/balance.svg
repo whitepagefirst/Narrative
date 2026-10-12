@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 80 340 270" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	<path d="M200 104 L200 322" />
+	<path d="M168 322 L232 322" />
+	<path d="M136 336 C 170 330, 230 330, 264 336" />
+	<path class="accent" d="M88 124 L312 96" />
+	<circle class="paper" cx="200" cy="110" r="7" />
+	<path d="M88 124 L58 214 M88 124 L118 214" />
+	<path d="M312 96 L282 186 M312 96 L342 186" />
+	<path class="paper" d="M48 214 C 66 238, 110 238, 128 214 Z" />
+	<path class="paper" d="M272 186 C 290 210, 334 210, 352 186 Z" />
+	<path class="paper" d="M70 192 L104 190 L106 214 L70 214 Z" />
+	<path d="M76 200 L98 199" />
+</svg>
