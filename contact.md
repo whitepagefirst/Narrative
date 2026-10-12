@@ -1,6 +1,6 @@
 ## About Us
 
-This page is an outlet of a online publication, built by multiple individuals who come together to create a platform
+This is an online publication, built by multiple individuals who come together to create a platform
 for sharing knowledge. The patronage of this site will change from time to time, and different companies will be in
 charge of maintaining and improving this site to ensure its continued growth and success.
 
