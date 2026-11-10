@@ -23,6 +23,31 @@
       Highlights from Voice of the Enterprise: AI & Machine Learning, Use Cases 2025.
     - Boehm, B., Basili, V. R. (2001): [*Software Defect Reduction Top 10 List*](https://doi.org/10.1109/2.962984).
       IEEE Computer 34 (1), 135–137.
+    - Cockburn, A. (1996, archived 2014): [*Walking skeleton*](https://web.archive.org/web/20140329201356/http://alistair.cockburn.us/Walking+skeleton).
+      The original description, with the excerpt from *Crystal Clear* and the distinction from a spike.
+    - Cockburn, A. (2004): [*Crystal Clear: A Human-Powered Methodology for Small Teams*](https://www.informit.com/store/crystal-clear-a-human-powered-methodology-for-small-9780201699470).
+      Addison-Wesley, ISBN 978-0-201-69947-0. Walking skeleton, early victory, incremental rearchitecture
+      and information radiators as strategies.
+    - Cockburn, A.: [*Bio*](https://alistaircockburn.com/Bio). Dates the walking skeleton to 1996 and lists
+      the other terms he coined; see also [Wikipedia](https://en.wikipedia.org/wiki/Alistair_Cockburn).
+    - Cockburn, A. (2005): [*Hexagonal Architecture*](https://alistair.cockburn.us/hexagonal-architecture/).
+      Ports and adapters.
+    - Needham, M. (2008): [*Crystal Clear: Book Review*](https://www.markhneedham.com/blog/2008/11/05/crystal-clear-book-review/).
+      The walking skeleton as a strategy for tackling the highest risk first.
+    - Fowler, M. (2000, rewritten 2006, revised 2024): [*Continuous Integration*](https://martinfowler.com/articles/continuousIntegration.html).
+    - Fowler, M.: articles on [delivery](https://martinfowler.com/tags/delivery.html), among them
+      [*DeploymentPipeline*](https://martinfowler.com/bliki/DeploymentPipeline.html),
+      [*ReproducibleBuild*](https://martinfowler.com/bliki/ReproducibleBuild.html),
+      [*KeystoneInterface*](https://martinfowler.com/bliki/KeystoneInterface.html),
+      [*BranchByAbstraction*](https://martinfowler.com/bliki/BranchByAbstraction.html),
+      [*BlueGreenDeployment*](https://martinfowler.com/bliki/BlueGreenDeployment.html),
+      [*InfrastructureAsCode*](https://martinfowler.com/bliki/InfrastructureAsCode.html),
+      [*PhoenixServer*](https://martinfowler.com/bliki/PhoenixServer.html) and
+      [*FrequencyReducesDifficulty*](https://martinfowler.com/bliki/FrequencyReducesDifficulty.html).
+    - Hodgson, P. (2016): [*Feature Toggles (aka Feature Flags)*](https://martinfowler.com/articles/feature-toggles.html).
+    - Sato, D. (2014): [*CanaryRelease*](https://martinfowler.com/bliki/CanaryRelease.html).
+    - Morris, K. (2013): [*ImmutableServer*](https://martinfowler.com/bliki/ImmutableServer.html).
+    - Falé, F., Gebhardt, S. (2017): [*SyntheticMonitoring*](https://martinfowler.com/bliki/SyntheticMonitoring.html).
     - Rüger, F. (2026): *Contract First API Development – Overview*. Internal wiki, as of 30 September 2026
       (not publicly available).
     - *CI/CD Pipelines*. Internal development wiki (not publicly available).
@@ -44,13 +69,20 @@
     agree before you build.
 
     ### Start with a running system
+    - Basili, V. R., Turner, A. J. (1975): [*Iterative Enhancement: A Practical Technique for Software Development*](https://www.cs.umd.edu/~basili/publications/journals/J04.pdf).
+      IEEE Transactions on Software Engineering SE-1 (4). An initial skeleton, grown step by step; the
+      earliest form of the idea.
+    - Hunt, A., Thomas, D. (1999): [*The Pragmatic Programmer*](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/).
+      Addison-Wesley. Tracer bullets: code that reaches the target end to end and shows how far off it is.
     - Freeman, S., Pryce, N. (2009): [*Growing Object-Oriented Software, Guided by Tests*](https://growing-object-oriented-software.com/).
-      Addison-Wesley. Their "walking skeleton", the thinnest slice that is built, deployed and tested end to
-      end before any feature, is White Page First under another name.
+      Addison-Wesley. Their walking skeleton, the thinnest slice that is built, deployed and tested end to
+      end before any feature, is the closest relative of White Page First. White Page First proves the way
+      to production first, takes it all the way there, and adds the contract.
     - Humble, J., Farley, D. (2010): [*Continuous Delivery*](https://continuousdelivery.com/).
       Addison-Wesley. The deployment pipeline as the backbone of a project, with cheap checks first.
     - Fowler, M. (2024): [*Continuous Integration*](https://martinfowler.com/articles/continuousIntegration.html).
-      The classic description of integrating at least daily so problems surface while they are small.
+      The classic description of integrating at least daily so problems surface while they are small. The
+      2024 revision weighs it against feature branching.
 
     ### Evidence for continuous delivery
     - Forsgren, N., Humble, J., Kim, G. (2018): [*Accelerate*](https://itrevolution.com/product/accelerate/).

@@ -1,0 +1,163 @@
+# Sub page /walking-skeleton: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: 'Roots: the walking skeleton'
+  drawing: skeleton
+  content: |
+    Starting with a running system is not a new idea. White Page First stands on one that is almost thirty
+    years old, shares most of its ground, and chooses a different first step.
+
+- section: origin
+  type: text
+  layout: two-col
+  headline: Where the idea comes from
+  content: |
+    Alistair Cockburn first came across the pattern around 1994 and named it in the late 1990s; his
+    [biography](https://alistaircockburn.com/Bio) dates the term to 1996 and calls it "a thinly connected
+    functioning architecture". In his book *Crystal Clear* (2004) he describes it like this:
+
+    > A Walking Skeleton is a tiny implementation of the system that performs a small end-to-end function.
+    > It need not use the final architecture, but it should link together the main architectural
+    > components. The architecture and the functionality can then evolve in parallel.
+
+    The [original article](https://web.archive.org/web/20140329201356/http://alistair.cockburn.us/Walking+skeleton)
+    tells where it came from. A lead designer told Cockburn about a large project of systems passing
+    messages around a ring. Within the first week, the two technical leads connected all systems so they
+    could pass a single null message around the ring. From then on, at the end of every week, the ring had
+    to be intact and pass all previous weeks' messages without failure. "It worked wonderfully, and we would
+    do it again."
+
+    Cockburn applied it on his own first large project. The first delivery after three months did little
+    more than "read a number, write a number", but it went live on schedule, connected server and database,
+    and let the team grow functionality while reworking the architecture underneath. The sponsors threw a
+    party. "We tested the team, the process, the technologies, and the architecture at a very early point in
+    the project."
+
+- section: relatives
+  type: text
+  layout: two-col
+  headline: A family of names
+  content: |
+    The idea has many names. Victor Basili and Joe Turner already built an initial "skeleton" and grew it
+    step by step in [*Iterative Enhancement*](https://www.cs.umd.edu/~basili/publications/journals/J04.pdf)
+    (1975). Andy Hunt and Dave Thomas call it [tracer bullets](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
+    (1999): code that hits the target end to end and shows how far off it is. Mary and Tom Poppendieck speak
+    of a spanning application.
+
+    Steve Freeman and Nat Pryce gave it its sharpest form in
+    [*Growing Object-Oriented Software, Guided by Tests*](https://growing-object-oriented-software.com/)
+    (2009): the thinnest slice of real functionality that can be built, deployed and tested end to end
+    automatically, before any feature. With them, the automated build and deployment became part of the
+    skeleton itself, not something added later.
+
+- section: strategies
+  type: text
+  layout: two-col
+  headline: A strategy among strategies
+  content: |
+    In *Crystal Clear* the walking skeleton doesn't stand alone. It is one of several strategies, next to
+    *Exploratory 360°* (checking a project in every direction before committing to it), *Early Victory*
+    (a first small success that gives the team and its sponsors confidence), *Incremental Rearchitecture*
+    (reworking the architecture in small steps while features keep coming) and
+    *Information Radiators* (making the state of the project visible to
+    anyone walking by). Its properties include frequent delivery and a technical environment with automated
+    tests, configuration management and frequent integration.
+
+    Two remarks by readers of the book matter for White Page First. Mark Needham's
+    [review](https://www.markhneedham.com/blog/2008/11/05/crystal-clear-book-review/) links the skeleton to
+    tackling "the highest risk or highest learning tasks first", and warns that a team still has to show
+    business value, or "the project sponsor may become very nervous". Both remarks shape the first line of
+    White Page First.
+
+- section: shared
+  type: text
+  layout: one-col
+  headline: What the two share
+  content: |
+    - **A running system first, features second.** Both refuse to build features on a system that has never
+      run as a whole.
+    - **Almost empty on purpose.** A null message around a ring and a "Hello World" in production do nothing
+      useful. That is the point: they test the path, not the content.
+    - **Permanent, not throwaway.** Cockburn separates the skeleton from the spike: a spike is thrown away,
+      the skeleton is "permanent code, built with production coding habits, regression tests". White Page
+      First calls the same thing *create nothing permanent that has to be thrown away later*.
+    - **Kept intact.** The ring had to stay intact every week; the parts are "hooked together, and will stay
+      hooked together from this point on". White Page First keeps the main line shippable after every change.
+    - **More than technology.** Both test the team, the process and the organisation early: permissions,
+      environments, the way decisions are made.
+    - **Growth in small, controlled steps.** Each increment rests on one that already works.
+
+- section: shared-figure
+  type: figure
+  layout: center
+  drawing: bridge-joined
+  content: |
+    Most of the ground is shared.
+
+- section: differences
+  type: text
+  layout: two-col
+  headline: Where White Page First chooses differently
+  content: |
+    ### The first step: architecture or release
+    The walking skeleton starts with the architecture: link the main components, and let them run
+    somewhere. White Page First starts with the release: prove the way to production first, then draw the
+    first line through the components. The reason is in the skeleton's own description. Architecture can be
+    reworked incrementally, Cockburn expects it to be. The way to production depends on others, on
+    operations, security, approvals and budgets, and is the slowest thing to change. So it comes first.
+
+    ### Production, not a place like it
+    The walking skeleton is usually deployed to a production-like environment. White Page First goes to
+    production on the first day. Only there do the real permissions, configuration and processes show up.
+    Where approvals are mandatory, every state is still technically shippable.
+
+    ### The interface as an agreement
+    The skeleton connects components, so interfaces exist from the start, but implicitly, shaped by whoever
+    connects them first. The null message around the ring was a contract nobody wrote down. White Page First
+    makes every such crossing an explicit [contract](/contract-first), agreed with its consumers, versioned
+    and checked on every run.
+
+    ### The pipeline as a discipline
+    Crystal Clear asks for automated tests and frequent integration, Freeman and Pryce for automated build
+    and deployment. White Page First adds an order: cheap checks before expensive builds, the image tested
+    before it is published, the registry as a quality gate. That order is the first principle applied to
+    the [pipeline](/pipeline).
+
+    ### Cheapest first, then riskiest first
+    Here White Page First learns from the skeleton. The white page is the cheapest step, because the
+    delivery path is the one risk every project shares. The first line is chosen by risk and by what it
+    teaches, as Crystal Clear recommends.
+
+    ### A concept on its own
+    The walking skeleton is a strategy inside a method, Crystal Clear, or a step inside a practice, test
+    driven development. White Page First stands on its own and can be combined with any method.
+
+- section: differences-figure
+  type: figure
+  layout: right
+  drawing: signpost
+  content: |
+    Shared ground, a different first step.
+
+- section: business-value
+  type: text
+  layout: two-col
+  headline: Something to show
+  content: |
+    Needham's warning applies to White Page First as well: a white page doesn't impress a sponsor. Two
+    things answer it. The white page takes days, not weeks, and is followed right away by the first line,
+    which is a real function, however small. And Cockburn's own story shows what a small thing in production
+    does: "read a number, write a number" went live on schedule, and the sponsors celebrated. An early
+    victory is not measured by its size, but by being real.
+
+    From then on the running system is the report. Instead of a status slide there is a link, and everyone
+    can see what works today.
+
+- section: continue
+  type: text
+  content: |
+    Next: [Contract First](/contract-first)
+
+    [Back to the overview](/)

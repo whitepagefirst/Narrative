@@ -23,7 +23,7 @@
 #
 # Drawings are the SVG files in assets/, used by their name without .svg: balance, book, bridge, contract, network, page,
 # path, pipeline, stack, venn, container, hourglass, linear, bin, puzzle,
-# parallel, bridge-joined, funnel, checklist, signpost. Add your own there as black and white line art: fill="none" and
+# parallel, bridge-joined, funnel, checklist, signpost, slice, skeleton, hexagon, flag, tracks. Add your own there as black and white line art: fill="none" and
 # stroke="currentColor"; class="accent" draws a heavier line, class="paper" fills a shape with the
 # page colour so it covers the lines behind it.
 
@@ -32,22 +32,23 @@ home:
     type: welcome
     headline: White Page First
     content: |
-      Early validation as a core principle of sustainable software development.
+      Deliver first. Agree first. Then build, on a foundation that already runs.
 
   - section: summary
     type: intro
     layout: upperRight
-    headline: Summary
+    headline: The concept
     content: |
       Software projects rarely fail because of individual programming errors. Far more often they fail because
-      central integration points are put off until the end. Two approaches tackle this pattern at different
-      places. White Page First Development (WPF) puts deployment at the start of a project and builds every
-      further feature on a foundation that already runs in production. Contract First moves the design of
-      interfaces ahead of their implementation and makes the jointly agreed API contract the binding reference
-      for everyone involved.
+      central integration points are put off until the end. White Page First is a concept for starting and
+      running software projects that refuses to put them off.
 
-      Both are expressions of the same principle. Only together, anchored in an automated pipeline, do they
-      reach their full effect as a general way of running software projects.
+      It puts deployment at the start: a white page goes to production before the first feature is written.
+      It draws a first line of real function through every part of the system, as the walking skeleton has
+      done for decades. And with Contract First it agrees on every interface before anyone implements it.
+      An automated pipeline holds all of it together and checks it on every run.
+
+      White Page First is not a method. It says what comes first, and leaves the rest to the team.
 
   - section: principle
     type: statement
@@ -55,10 +56,42 @@ home:
     content: |
       Whatever carries all further work is defined and secured first.
 
+  - section: what-comes-first
+    type: reader
+    layout: split
+    headline: What comes first
+    content: |
+      - **Delivery before features.** The first thing a project builds is its way to production.
+      - **Connection before completion.** The parts are joined while they are still thin, and stay joined.
+      - **Agreement before implementation.** An interface is agreed by those who use it before anyone builds it.
+      - **Cheap checks before expensive builds.** Nothing is kept that a later check could still reject.
+      - **Evidence before assumptions.** Progress is what runs in production, not what a plan reports.
+
+      Nothing that comes second is dropped. It comes second because it rests on what comes first.
+
+  - section: commitments
+    type: steps
+    headline: Seven commitments
+    content: |
+      A team that works White Page First commits to this on the first day, and keeps to it until the last.
+
+      1. **Start with the release.** A white page goes to production through an automated pipeline, together
+         with the environment it runs in, before the first feature exists.
+      2. **Draw the first line through everything.** The first real function crosses every part that has to
+         work together, chosen for what it teaches, not for what it costs.
+      3. **Agree on every interface first.** Contracts are designed together with their consumers, checked in
+         the pipeline and published with every version.
+      4. **Create nothing permanent that has to be thrown away.** Cheap checks run before expensive builds;
+         experiments stay outside the main line.
+      5. **Keep the main line shippable.** Everyone integrates daily, a red pipeline is fixed first, and
+         unfinished work is hidden, not held back.
+      6. **Grow in thin slices.** Every feature extends the contract, then the code, then reaches production.
+      7. **Let the running system speak.** The state of the project is a link, not a report.
+
   - section: introduction
     type: intro
     layout: middleLeft
-    headline: Introduction
+    headline: Why it matters
     content: |
       A complex system is built over months. Shortly before the release it turns out that the components don't
       work together, the deployment pipeline isn't ready, and frontend and backend assumed different interfaces.
@@ -133,6 +166,19 @@ home:
 
       For a book it would mean securing printing and delivery before the first chapter is written.
 
+  - section: first-line
+    type: drawing
+    layout: left
+    drawing: slice
+    headline: The first line
+    content: |
+      A white page proves that something reaches production, not that the parts of a system can talk to each
+      other. So it is followed right away by the first line: the thinnest slice of real function through every
+      component, one screen to the database and back, one message through every service.
+
+      It runs through the integration the team is least sure about. Each part is still almost empty, but they
+      are joined, and they stay joined.
+
   - section: two-principles
     type: steps
     headline: Two principles
@@ -141,6 +187,28 @@ home:
          builds, so a faulty artifact never ends up in the registry.
       2. **Start with the release.** Deployment is the first step, not the last. Without it, no work reaches
          anyone.
+
+  - section: walking-skeleton
+    type: chapter
+    headline: 'Roots: the walking skeleton'
+    drawing: skeleton
+    content: |
+      Shared ground, a different first step. [Read the chapter](/walking-skeleton)
+
+  - section: skeleton-comparison
+    type: reader
+    layout: split
+    headline: Standing on a good idea
+    content: |
+      Alistair Cockburn named the walking skeleton in the late 1990s and later described it as "a tiny
+      implementation of the system that performs a small end-to-end function", linking the main components so
+      architecture and functionality can grow in parallel. White Page First shares its core: a running system before features, permanent code instead of
+      throwaway prototypes, parts that stay joined from the first week on, and the highest risk tackled first.
+
+      It differs in its first step and in what it makes explicit. The skeleton starts with the architecture,
+      White Page First with the release, because the way to production is the slowest thing to change. It
+      goes to production, not to a place that resembles it. It writes every interface down as an agreed
+      contract. And it gives the pipeline a fixed order.
 
   - section: contract-first
     type: chapter
@@ -178,6 +246,18 @@ home:
 
       Design errors surface while fixing them takes a few lines of YAML, and stubs, clients, mocks, tests and
       documentation can all be generated from the contract.
+
+  - section: contract-as-port
+    type: drawing
+    layout: right
+    drawing: hexagon
+    headline: The contract as a port
+    content: |
+      In Cockburn's [hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/) an
+      application talks to the world only through ports, and adapters plug technology into them. An agreed
+      contract is such a port between teams: provider, consumer and mock server are its adapters.
+
+      Parallel work is then not a trick, but a property of the architecture.
 
   - section: synthesis
     type: chapter
@@ -239,6 +319,42 @@ home:
       configuration. Test that image, not just the source code, and only push it afterwards. The registry
       becomes a quality gate: only verified containers get in.
 
+  - section: rhythm
+    type: reader
+    layout: two-col
+    headline: The rhythm of integration
+    content: |
+      A pipeline keeps the main line shippable only if changes reach it. White Page First takes the practices
+      of [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html) as its floor:
+      everyone pushes to the main line at least daily, every push is built and tested, a broken build is fixed
+      before anything else, and the commit stage stays around ten minutes.
+
+      A branch that lives for weeks is a postponed integration point. Branches are fine as long as they live
+      for hours.
+
+  - section: hide-work-in-progress
+    type: drawing
+    layout: left
+    drawing: flag
+    headline: Shippable is not released
+    content: |
+      When every run goes to production, unfinished work goes there too, integrated and tested, but not yet
+      visible. A [keystone interface](https://martinfowler.com/bliki/KeystoneInterface.html) or a
+      [feature toggle](https://martinfowler.com/articles/feature-toggles.html) decides when users see it.
+
+      Toggles are removed once a feature is released; a toggle that stays is technical debt with a switch.
+
+  - section: release-safely
+    type: drawing
+    layout: right
+    drawing: tracks
+    headline: A way back, and small steps forward
+    content: |
+      Every verified version is in the registry, so going back means deploying the previous one.
+      [Blue-green deployments](https://martinfowler.com/bliki/BlueGreenDeployment.html) and
+      [canary releases](https://martinfowler.com/bliki/CanaryRelease.html) make the step forward smaller still:
+      a cheap check on a small scale prevents the expensive mistake for everyone.
+
   - section: incremental-growth
     type: drawing
     layout: left
@@ -288,6 +404,14 @@ home:
       ### "Our application is too complex"
       The more components, teams and interfaces, the more it matters to know early whether everything fits.
 
+      ### "Isn't this just a walking skeleton?"
+      In large part, and gladly so. White Page First proves the way to production first, goes all the way
+      there, and writes every interface down as a contract.
+
+      ### "The sponsor sees nothing for weeks"
+      The white page takes days, and the first line after it is a real function. Progress is a link to the
+      running system.
+
       ### What it takes
       Skills in pipeline automation, the discipline not to bypass the pipeline under pressure, and a real
       culture of agreeing on contracts together.
@@ -303,9 +427,10 @@ home:
     headline: Validation that starts on day one
     content: |
       Many failed software projects share one cause: validation starts too late. White Page First puts
-      deployment at the start, Contract First puts the agreed interface before the implementation. Anchored in
-      a pipeline that checks deliverability and contract compliance on every run, they form an approach that
-      holds regardless of customer, domain and technology.
+      deployment at the start, the first line joins every part of the system, and Contract First puts the
+      agreed interface before the implementation. Anchored in a pipeline that checks deliverability and
+      contract compliance on every run, they form a concept that holds regardless of customer, domain,
+      method and technology.
 
   - section: start-small
     type: statement
@@ -323,10 +448,13 @@ home:
 
       - [Why software projects fail](/why-projects-fail): the scenario, the figures and the postponed
         integration point.
-      - [White Page First](/white-page-first): the basic idea and its two principles.
-      - [Contract First](/contract-first): from code first to a contract as binding reference.
+      - [White Page First](/white-page-first): the white page, the first line and the two principles.
+      - [Roots: the walking skeleton](/walking-skeleton): where the idea comes from, what is shared and what
+        differs.
+      - [Contract First](/contract-first): from code first to a contract as binding reference and port.
       - [Synthesis](/synthesis): why the two approaches belong together.
-      - [Implementation](/pipeline): CI/CD, the order of the stages, testing the image you ship.
+      - [Implementation](/pipeline): the order of the stages, the rhythm of integration, hiding work in
+        progress, releasing safely.
       - [Discussion](/discussion): benefits, objections, limits and the conclusion.
       - [Sources and further reading](/sources): every reference, and studies on the principle.
 

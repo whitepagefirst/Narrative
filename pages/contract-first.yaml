@@ -89,6 +89,47 @@
     routing, validation and serialisation according to the contract. The development team then only
     implements the business logic, and contract and implementation can't drift apart in the first place.
 
+- section: contract-as-port
+  type: text
+  layout: two-col
+  headline: The contract as a port
+  content: |
+    The same Alistair Cockburn who named the walking skeleton described a fitting architecture a few years
+    later. In his [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/) (2005),
+    also known as ports and adapters, an application talks to the outside world only through *ports*:
+    deliberately designed boundaries that don't depend on any technology. *Adapters* connect a concrete
+    technology to a port, a browser, a test, a database, another service. Any number of adapters can serve
+    the same port.
+
+    An agreed API contract is exactly such a port, drawn at the boundary between teams. The provider
+    implements it, the consumers talk to it, and the mock server generated from the contract is simply one
+    more adapter. That is why parallel work under Contract First is not a trick: it is a property of the
+    architecture. The contract is the boundary, and everything on either side can be replaced without the
+    other side noticing.
+
+    It also explains how the [first line](/white-page-first) and the contract relate. The first line crosses
+    every boundary of the system once. Under Contract First, every one of those crossings is a port with an
+    agreed contract, not an accidental call that happened to work.
+
+- section: contract-as-port-figure
+  type: figure
+  layout: right
+  drawing: hexagon
+  content: |
+    The contract is the port; the provider, the consumer and the mock server are its adapters.
+
+- section: consumer-driven
+  type: text
+  layout: two-col
+  headline: Consumers state what they need
+  content: |
+    A contract designed together can still miss what a consumer actually relies on.
+    [Consumer-driven contracts](https://martinfowler.com/articles/consumerDrivenContracts.html), described by
+    Ian Robinson in 2006, close this gap: every consumer writes down its expectations as executable tests,
+    and the provider runs all of them in its pipeline. The OpenAPI document says what the interface offers;
+    the consumer tests say which part of it is in use. Together they show which change is safe and which
+    one breaks someone.
+
 - section: continue
   type: text
   content: |

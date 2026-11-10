@@ -6,17 +6,18 @@
   headline: White Page First
   drawing: page
   content: |
-    Start with the smallest possible product, fully built, tested and delivered.
+    Start with the smallest possible product, fully built, tested and delivered. Then draw the first line
+    through everything that has to work together.
 
 - section: basic-idea
   type: text
   layout: two-col
   headline: The basic idea
   content: |
-    White Page First Development reverses the linear order. The name describes the starting point: at the
+    White Page First reverses the linear order of a project. The name describes the starting point: at the
     beginning there is a "white page", the smallest possible product that is nevertheless fully built,
-    checked and delivered to the target environment. Only once this path works does the actual development
-    of features begin.
+    checked and delivered to the target environment. Only once this path works does the development of
+    features begin.
 
     A comparison from publishing makes the idea clear. For a book it would mean securing printing and
     delivery before the first chapter is written. That sounds trivial, but it removes a whole series of
@@ -24,9 +25,9 @@
     there is no doubt left whether the work will reach its readers at all.
 
     In software development this means: a project starts with a minimal application, in the simplest case
-    an HTML page showing "Hello World", in general the smallest and cheapest feature of the domain. This
-    application is delivered to the target environment right away through an automated pipeline. All further
-    features are then added step by step on this foundation.
+    an HTML page showing "Hello World" or a single health endpoint. This application is delivered to
+    production right away through an automated pipeline, together with the environment it runs in. All
+    further features are then added step by step on this foundation.
 
 - section: printing-first
   type: figure
@@ -35,21 +36,53 @@
   content: |
     Printing and delivery first, the chapters follow.
 
+- section: first-line
+  type: text
+  layout: two-col
+  headline: The white page and the first line
+  content: |
+    A white page in production proves one thing: that something can reach production. That is the first
+    risk every project shares, and the cheapest to remove. But most systems are more than one part. A
+    frontend, a backend, a database, a message queue, a partner's API: a page that reaches users says
+    nothing about whether these parts can talk to each other.
+
+    So the white page is followed by the *first line*: the thinnest slice of real function that crosses
+    every part that has to work together. For a web application it is one screen to the database and back.
+    For systems that pass messages, it is a single message travelling through all of them. Each part is
+    still almost empty, but they are joined, and they stay joined from then on.
+
+    The first line is not chosen because it is cheap, but because it teaches the most. It runs through the
+    integration the team is least sure about. Here White Page First meets an older idea, the
+    [walking skeleton](/walking-skeleton), and adopts its rule: tackle the highest risk first.
+
+    For a single service without neighbours, the white page and the first line can be the same thing. The
+    larger the system, the further apart they are, and the more both of them matter.
+
+- section: first-line-figure
+  type: figure
+  layout: right
+  drawing: slice
+  content: |
+    The first line crosses every layer, however thin each of them still is.
+
 - section: two-principles
   type: text
   layout: one-col
   headline: Two principles
   content: |
-    White Page First rests on two principles that shape the whole approach, well beyond the pipeline.
+    White Page First rests on two principles that shape the whole concept, well beyond the pipeline.
 
     ### Create nothing permanent that has to be thrown away later
-    Work that will foreseeably have to be
-    redone wastes resources and raises the risk that faulty intermediate results get reused. An example
-    from the pipeline: if a product has to meet coding standards but the linter only runs after an
-    expensive build, the built image has to be discarded when the check fails. It was not only built in
-    vain, the risk also grows that a faulty artifact ends up in a registry. Consequently, static checks
-    and unit tests run before the build; end-to-end tests follow afterwards and check the built, but not
-    yet published application.
+    Work that will foreseeably have to be redone wastes resources and raises the risk that faulty
+    intermediate results get reused. An example from the pipeline: if a product has to meet coding
+    standards but the linter only runs after an expensive build, the built image has to be discarded when
+    the check fails. It was not only built in vain, the risk also grows that a faulty artifact ends up in a
+    registry. Consequently, static checks and unit tests run before the build; end-to-end tests follow
+    afterwards and check the built, but not yet published application.
+
+    The principle doesn't forbid experiments. A spike, a quick throwaway trial that answers one technical
+    question, is welcome, as long as it stays outside the main line and is deleted once it has answered.
+    Whatever enters the main line is built with production habits and is meant to stay.
 
 - section: nothing-thrown-away
   type: figure
@@ -63,14 +96,31 @@
   layout: one-col
   content: |
     ### Start with the release
-    Deployment is not the last but the first step of a project. Without a
-    working deployment all further work is worthless, because it reaches no one. If it works from the
-    start, every finished feature can be used immediately, and the progress of the project can be read
-    from the running system at any time.
+    Deployment is not the last but the first step of a project. Without a working deployment all further
+    work is worthless, because it reaches no one. If it works from the start, every finished feature can be
+    used immediately, and the progress of the project can be read from the running system at any time.
+
+    The target is production, not a place that resembles it. Only production has the real permissions, the
+    real network, the real operations team and the real approval process, and those are the things that
+    take longest to sort out. Where an organisation requires a formal approval before a release, every
+    state is still built to be technically shippable; only the decision to switch it on waits.
+
+- section: a-concept
+  type: text
+  layout: two-col
+  headline: A concept, not a method
+  content: |
+    White Page First says what comes first. It doesn't say how a team plans, estimates, meets or
+    prioritises. That is why it combines with Scrum, Kanban, Crystal or a classic phase model alike: each of
+    them can start with a white page, and each of them gains from it.
+
+    What the concept asks of a team is small to state and hard to keep: deliver before building, connect
+    before completing, agree before implementing, and never let the main line become unshippable. The
+    following chapters show where these commitments come from and how a pipeline keeps them.
 
 - section: continue
   type: text
   content: |
-    Next: [Contract First](/contract-first)
+    Next: [Roots: the walking skeleton](/walking-skeleton)
 
     [Back to the overview](/)

@@ -55,6 +55,22 @@
     The opposite is true: the more components, teams and interfaces a system has, the more important it is
     to know early whether everything fits together.
 
+    ### "Isn't this just a walking skeleton?"
+    In large part, and gladly so. White Page First shares the
+    [walking skeleton's](/walking-skeleton) core: a running system before features, permanent code instead
+    of throwaway prototypes, parts that stay joined from the first week on. It differs in its first step and
+    in what it makes explicit. It proves the way to production before it connects the architecture, it
+    goes to production rather than to a place that resembles it, it writes down every interface as an
+    agreed contract, and it gives the pipeline a fixed order. Standing on a good idea is not a weakness; the
+    concept says openly where it comes from and where it goes further.
+
+    ### "The sponsor sees nothing for weeks"
+    A white page is not a demo, and a sponsor who only sees a "Hello World" may well get nervous. But the
+    white page takes days, not weeks, and the first line that follows is a real function, however small.
+    Alistair Cockburn reports a first release that did little more than "read a number, write a number":
+    it went live on schedule, and the sponsors threw a party. From then on progress is a link to the
+    running system, not a slide.
+
 - section: where-it-fits
   type: figure
   layout: right
@@ -74,10 +90,14 @@
     contracts are needed as well, especially for handling breaking changes and their versioning.
 
     The demand that the main branch always goes straight to production has to be adapted to the context,
-    too. In regulated environments approval steps may be mandatory, and unfinished features have to be
-    hidden from users through suitable mechanisms such as feature toggles. The principle stays the same:
-    every state should be technically shippable there as well, even if the release is approved
-    organisationally.
+    too. In regulated environments approval steps may be mandatory. Hiding unfinished work behind
+    [feature toggles](/pipeline) is needed everywhere, not only there, and toggles have to be removed again
+    once a feature is released. The principle stays the same: every state should be technically shippable,
+    even if the release is approved organisationally.
+
+    The first line also asks for a decision the team can't fully make yet: which components the system will
+    have. As with the walking skeleton, it doesn't have to be the final architecture. Expect to rework it in
+    small steps while features keep coming; the line through it stays intact.
 
     Finally, Contract First in this form matters mainly for projects that provide or use interfaces. For
     applications without external interfaces, White Page First can be applied on its own. But the idea of
@@ -98,8 +118,10 @@
   content: |
     Many failed software projects share a common cause: validation starts too late. White Page First
     addresses this by putting deployment at the start and building every project on a foundation that
-    already runs in production. Contract First carries the same thought over to interfaces: the jointly
-    agreed API contract comes before the implementation and is binding for everyone involved.
+    already runs in production. The first line joins every component of the system through that
+    foundation, as the walking skeleton has done for almost thirty years. Contract First carries the same
+    thought over to interfaces: the jointly agreed API contract comes before the implementation and is
+    binding for everyone involved.
 
     Both approaches are expressions of the same principle and only reach their full effect together.
     Anchored in a pipeline that checks both deliverability and contract compliance on every run, they form

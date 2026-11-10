@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 60 370 280" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+	<circle cx="58" cy="200" r="14" />
+	<path d="M38 236 C 42 222, 74 222, 78 236" />
+	<path class="accent" d="M84 200 C 130 199, 160 200, 190 200" />
+	<circle class="paper" cx="196" cy="200" r="7" />
+	<path class="accent" d="M202 196 C 230 170, 250 132, 288 128" />
+	<path d="M202 204 C 230 230, 250 268, 288 272" />
+	<path d="M190 184 L214 166" />
+	<circle cx="216" cy="164" r="4" />
+	<path class="paper" d="M292 98 L366 98 L366 160 L292 160 Z" />
+	<path d="M304 116 L354 116" />
+	<path d="M304 130 L354 130" />
+	<path d="M304 144 L332 144" />
+	<path class="paper" d="M292 240 L366 240 L366 302 L292 302 Z" />
+	<path d="M304 258 L354 258" />
+	<path d="M304 272 L354 272" />
+	<path d="M304 286 L332 286" />
+</svg>

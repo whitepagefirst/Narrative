@@ -6,7 +6,7 @@
   headline: Synthesis
   drawing: venn
   content: |
-    Two expressions of one principle.
+    Two expressions of one principle, joined by the first line.
 
 - section: shared-structure
   type: text
@@ -42,6 +42,21 @@
     implementation actually honours the contract or can be run in production. Only in combination, when the
     contract is part of the pipeline and checked against the implementation on every run, does an approach
     emerge that addresses both risks at once.
+
+- section: first-line
+  type: text
+  layout: two-col
+  headline: Where the two meet
+  content: |
+    They meet in the first line. The [walking skeleton](/walking-skeleton) joins every component of a
+    system with one thin function; White Page First lets that line end in production, and Contract First
+    turns every boundary it crosses into an agreed contract. Seen this way, the concept is a walking
+    skeleton whose path to production is proven before it takes its first step, and whose joints are
+    written down before they are built.
+
+    The same picture shows the architecture behind it. Each contract is a port in the sense of Cockburn's
+    [hexagonal architecture](/contract-first): providers, consumers and mock servers are adapters, and the
+    pipeline checks on every run that they still fit the port.
 
 - section: continue
   type: text

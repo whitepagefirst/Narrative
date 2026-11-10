@@ -41,7 +41,9 @@
   content: |
     Both approaches come together in the automated pipeline. Its stages consistently follow the first
     principle: cheap checks that need no built artifact run first; expensive steps only follow once their
-    preconditions are secured.
+    preconditions are secured. This is what Martin Fowler calls a
+    [deployment pipeline](https://martinfowler.com/bliki/DeploymentPipeline.html): fast feedback first,
+    deeper confidence later.
 
     ### Preparation
     The environment is set up and dependencies are installed. This ensures every run
@@ -58,7 +60,8 @@
     fail early and cheaply.
 
     ### Build
-    Only now is the application built. The build has to be reproducible and must not depend on
+    Only now is the application built. The build has to be
+    [reproducible](https://martinfowler.com/bliki/ReproducibleBuild.html) and must not depend on
     external, changing sources while it runs. Otherwise phantom errors appear: the same code base works
     one day and not the next. What "build" means depends on the technology: C is compiled, TypeScript
     transpiled, PHP needs its dependencies installed. Whatever the stack, the result should always be a
@@ -87,7 +90,9 @@
 
     ### Smoke tests
     A last, short check confirms that the deployed application is running and responding
-    as expected in its live environment.
+    as expected in its live environment. Where it matters, the same checks keep running afterwards on a
+    schedule, as [synthetic monitoring](https://martinfowler.com/bliki/SyntheticMonitoring.html), so a
+    release that breaks later is noticed by the team before its users notice it.
 
 - section: test-then-push
   type: figure
@@ -134,22 +139,121 @@
   content: |
     Every stage is a quality gate.
 
+- section: rhythm
+  type: text
+  layout: two-col
+  headline: The rhythm of integration
+  content: |
+    A pipeline only keeps the main line shippable if changes actually reach it. Martin Fowler's
+    [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html), first published
+    in 2000, rewritten in 2006 and thoroughly revised in 2024, sets the rhythm that White Page First takes as
+    its floor:
+
+    - **Everything in a version-controlled mainline**, everything needed to build and run the product.
+    - **An automated, self-testing build**, one command from source to running system.
+    - **Everyone pushes to the mainline at least once a day**, and every push triggers a build.
+    - **A broken build is fixed immediately**, usually by reverting, before anything else is done.
+    - **The build is kept fast**, around ten minutes for the commit stage.
+    - **Everyone can see what's happening**, and deployment is automated into every environment.
+
+    Fowler writes that a new project can "begin with Continuous Integration from the beginning", and when a
+    build grows slow, he names setting up a deployment pipeline "probably the most crucial step". White Page
+    First draws the conclusion: start with that pipeline, before there is anything to slow it down.
+
+    His 2024 revision deals at length with feature branching, which has spread widely since. A branch that
+    lives for weeks is a postponed integration point, exactly the pattern White Page First sets out to
+    avoid. Branches are fine, as long as they live for hours, not weeks.
+    [Frequency reduces difficulty](https://martinfowler.com/bliki/FrequencyReducesDifficulty.html): what
+    hurts when it is done rarely gets easy when it is done all the time.
+
+- section: hide-work-in-progress
+  type: text
+  layout: two-col
+  headline: Shippable is not the same as released
+  content: |
+    When the main line goes to production after every run, unfinished work reaches production too. That is
+    intended: it is integrated, built and tested like everything else. It just mustn't be visible yet.
+    Hiding work in progress is therefore not an exception for regulated environments, but the normal case.
+
+    Three techniques do the job. A [keystone interface](https://martinfowler.com/bliki/KeystoneInterface.html)
+    builds a feature from the back to the front and adds the button or route that makes it reachable last.
+    [Feature toggles](https://martinfowler.com/articles/feature-toggles.html) switch latent code on for a
+    team, a test group or everyone, without a new deployment.
+    [Branch by abstraction](https://martinfowler.com/bliki/BranchByAbstraction.html) replaces a larger part
+    of the system behind an abstraction, step by step, while the main line keeps running.
+
+    Toggles have a price. Every one of them doubles a path through the code, so they are removed as soon as
+    the feature is released. A toggle that stays is technical debt with a switch.
+
+- section: hide-work-in-progress-figure
+  type: figure
+  layout: left
+  drawing: flag
+  content: |
+    The work is on the main line; a flag decides when it is seen.
+
+- section: release-safely
+  type: text
+  layout: two-col
+  headline: A way back, and small steps forward
+  content: |
+    Deploying several times a day is only calm if every deployment can be undone in minutes. The registry
+    already holds every verified version, so going back means deploying the previous one. Two release
+    patterns make the step forward smaller still.
+
+    With [blue-green deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) a second, identical
+    environment receives the new version while the first one keeps serving. Traffic is switched over once
+    the new version is verified, and switched back if anything goes wrong. A
+    [canary release](https://martinfowler.com/bliki/CanaryRelease.html) sends only a small share of users to
+    the new version first and widens it while the figures stay healthy.
+
+    Both follow the first principle again: the expensive mistake, a broken release for everyone, is
+    prevented by a cheap check on a small scale.
+
+- section: release-safely-figure
+  type: figure
+  layout: right
+  drawing: tracks
+  content: |
+    Two identical environments; the switch decides which one users reach.
+
+- section: environment-as-code
+  type: text
+  layout: two-col
+  headline: The environment belongs to the white page
+  content: |
+    A white page that reaches production through a hand-built server proves less than it seems. If the
+    environment can't be rebuilt, the next one will differ, and the next release meets a surprise. That is
+    why the target environment is part of the white page, described as
+    [infrastructure as code](https://martinfowler.com/bliki/InfrastructureAsCode.html) and created by the
+    pipeline like everything else.
+
+    Servers and containers are not patched in place, but replaced by new ones built from the same
+    definition, as [immutable](https://martinfowler.com/bliki/ImmutableServer.html) or
+    [phoenix servers](https://martinfowler.com/bliki/PhoenixServer.html). The container image that the
+    pipeline tests is the same one that runs; the environment it runs in is just as reproducible.
+
 - section: minimal-start
   type: text
   layout: two-col
   headline: The minimal start
   content: |
-    A project following this approach deliberately starts small. If it provides or uses interfaces, it
+    A project following this concept deliberately starts small. If it provides or uses interfaces, it
     begins with a minimal API contract that all teams involved design together, in the simplest case a
     single health or "Hello World" endpoint. Alongside it comes an application that does nothing but fulfil
-    this contract, and a pipeline that checks contract and application, builds them and delivers them to the
-    staging or production system.
+    this contract, the environment it runs in, described as code, and a pipeline that checks contract and
+    application, builds them and delivers them to production.
 
     This looks trivial, but it isn't. With this first run the deployment pipeline is proven, permissions are
     sorted out and the workflow is established. At the same time the team has already practised agreeing on
     interfaces once, and contract linting and contract tests are anchored in the pipeline before the first
     line of business code is written. This ensures that everything developed next can actually reach
     production, and that everyone involved knows how to agree on changes to the interface together.
+
+    Right after the white page comes the [first line](/white-page-first): one real function through every
+    component, chosen for the integration the team is least sure about. Each crossing it makes is a
+    contract, each part it touches goes through the same pipeline. From this moment on the system is a
+    [walking skeleton](/walking-skeleton) that already runs in production.
 
 - section: incremental-growth
   type: text
@@ -158,7 +262,8 @@
   content: |
     On this foundation the system grows in small steps. For every new feature the contract is extended and
     agreed first. Then providers and consumers develop in parallel, the pipeline checks the implementation
-    against the contract, and the result is shipped. Every one of these cycles ends with a working system
+    against the contract, and the result is shipped, hidden behind a toggle until it is ready to be seen.
+    Every one of these cycles ends with a working system
     that runs in production. There is no longer a "big bang" at the end of the project, where it shows for
     the first time whether everything fits together.
 
