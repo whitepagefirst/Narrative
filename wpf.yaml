@@ -14,6 +14,9 @@
 #                               listed in the navigation
 #   contributor                 contributors of a GitHub `repository`
 #
+# Every section may set `lang` when its language is not English, e.g. `lang: de`; long words
+# are then hyphenated with the right dictionary.
+#
 # Sub pages for reading live in pages/<name>.yaml and are served at /<name>. They use:
 #   hero                        headline, lead and optional `drawing`, drawn once on load
 #   text        one-col | two-col
