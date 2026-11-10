@@ -32,7 +32,7 @@ home:
     type: welcome
     headline: White Page First
     content: |
-      Deliver first. Agree first. Then build, on a foundation that already runs.
+      Early validation as a core principle of sustainable software development.
 
   - section: summary
     type: intro
