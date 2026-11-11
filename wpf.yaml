@@ -93,6 +93,10 @@ home:
     why:
       1: >-
         Until a project can release, everything it builds is wasted code, wasted time and wasted money.
+    dont:
+      4: >-
+        Never run unit tests in or against a container that is already built. Once a container is built, it
+        can and will leak into the registry. Never build code that is invalid or untested.
 
   - section: introduction
     type: intro
