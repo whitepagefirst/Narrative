@@ -93,6 +93,14 @@ home:
     why:
       1: >-
         Until a project can release, everything it builds is wasted code, wasted time and wasted money.
+    how:
+      5: |-
+        Every feature lives in a feature branch of its own, and every branch runs online at its own address,
+        where it can be tested completely ([Feature-branch deployments](/feature-branches)). You, your
+        teammates and the business have everything there to try it and to critique it.
+
+        When it should go live, merge it. That's all. No feature flags, no cherry-picking: stop the
+        workarounds.
     dont:
       4: >-
         Never run unit tests in or against a container that is already built. Once a container is built, it

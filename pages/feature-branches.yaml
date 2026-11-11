@@ -86,9 +86,10 @@
     address. Its image is tagged with the branch and the commit, so it can never be mistaken for a release,
     and it is never promoted: only the main line deploys to production.
 
-    A preview is not a reason to keep a branch alive. Branches still live for hours, at most a few days; the
-    deployment just makes those hours count. Unfinished work that has to be merged earlier stays
-    [behind a toggle](/pipeline) on the main line.
+    A preview is not a reason to keep a branch alive longer than its feature needs: keep features small, so
+    their branches live for days, not months. A feature is merged when it should go live, and not before.
+    Everything needed to judge it is already on its branch, so it needs no toggle to hide it on the main line
+    and no cherry-picking to get it out.
 
 - section: visible
   type: text
