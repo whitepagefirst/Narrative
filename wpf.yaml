@@ -90,6 +90,10 @@ home:
          unfinished work is hidden, not held back.
       6. **Grow in thin slices.** Every feature extends the contract, then the code, then reaches production.
       7. **Let the running system speak.** The state of the project is a link, not a report.
+    why:
+      1: >-
+        Until a project can release, nothing it builds is of any use. Work that cannot reach production is
+        only inventory, so the way there comes first.
 
   - section: introduction
     type: intro
