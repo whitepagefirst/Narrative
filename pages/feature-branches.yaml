@@ -1,0 +1,124 @@
+# Sub page /feature-branches: a hero followed by text sections (layout: one-col | two-col).
+# Section types are described at the top of wpf.yaml.
+
+- section: hero
+  type: hero
+  headline: Feature-branch deployments
+  drawing: parallel
+  content: |
+    Every feature runs before it is merged: at its own address, for everyone who has to see it.
+
+- section: why
+  type: text
+  layout: two-col
+  headline: A feature is seen where it runs
+  content: |
+    A merge request shows what changed in the code. It does not show what the change does. Whether a form is
+    usable, a number is right or a flow makes sense can only be judged on a running system, and the earlier
+    someone judges it, the cheaper a wrong turn is.
+
+    So every feature branch is deployed. Every push to it ends in a running version of the application, at
+    an address of its own, built from exactly this branch. You test your feature there, your teammates review
+    it there, and the business sees it there before it is merged, not weeks later in a demo.
+
+    This is the first principle once more, applied to a single feature: the way to the running system comes
+    first, and a feature is shown, not described. "Done" means: deployed on its branch, reviewed on its
+    branch, accepted on its branch, then merged.
+
+- section: parallel-figure
+  type: figure
+  layout: right
+  drawing: signpost
+  content: |
+    Every branch has its own address, and the address says which branch it is.
+
+- section: ingress
+  type: text
+  layout: one-col
+  headline: An address for every branch
+  content: |
+    A branch only becomes visible when it can be reached. Every feature deployment therefore gets an ingress
+    of its own, and its address is derived from the branch name, never typed by hand. The pipeline turns
+    `feature/1234-search-button` into a slug and the slug into a host name, for example
+    `search-1234-search-button.feature.example.org`: the service, the branch, a subdomain that only feature
+    deployments use.
+
+    Everything that makes such an address work is set up once, not once per branch:
+
+    - **DNS.** A wildcard record sends every name below the feature subdomain to the cluster.
+    - **Certificate.** A wildcard certificate for that subdomain, issued and renewed automatically, so every
+      branch has TLS from its first push.
+    - **Entry point.** One shared listener of the ingress controller or gateway accepts the whole subdomain.
+      Each deployment only adds its route, the host name pointing at its service.
+    - **Access.** Feature deployments are not public. The same single sign-on that protects the rest of the
+      system sits in front of the subdomain, so teammates and the business sign in as usual and nobody else
+      gets in.
+
+    With that in place, a new branch needs no ticket, no DNS change and no certificate request. It has an
+    address as soon as its pipeline is through.
+
+- section: isolation
+  type: text
+  layout: two-col
+  headline: Its own space, its own data
+  content: |
+    Each feature deployment lives in a space of its own, a namespace named after the branch, with its own
+    release of the application. What the feature changes, it changes there: its own databases and caches,
+    created with the deployment and seeded with test data, so nobody tests against real data or against
+    another branch's leftovers.
+
+    What the feature doesn't change, it doesn't copy. Other services are used in the version that runs on the
+    main line, so a feature is tested against the system it will be merged into, not against a private copy
+    of it. Previews get small limits for memory and processor time and no replicas; they are for looking,
+    not for load.
+
+    Secrets reach the new space the same way as for every other deployment, through the pipeline, never in
+    the repository. Monitoring takes the branch into its names, so every preview has its own dashboards and
+    none overwrites the other's.
+
+- section: order
+  type: text
+  layout: two-col
+  headline: Tested first, never released
+  content: |
+    A feature deployment goes through the same pipeline as everything else, in the same order: tests and
+    scans first, then the build, then the push, then the deployment. A branch that fails its tests gets no
+    address. Its image is tagged with the branch and the commit, so it can never be mistaken for a release,
+    and it is never promoted: only the main line deploys to production.
+
+    A preview is not a reason to keep a branch alive. Branches still live for hours, at most a few days; the
+    deployment just makes those hours count. Unfinished work that has to be merged earlier stays
+    [behind a toggle](/pipeline) on the main line.
+
+- section: visible
+  type: text
+  layout: two-col
+  headline: Visible to you, your team and the business
+  content: |
+    The address is posted where the work is discussed: on the merge request, next to the changes, so nobody
+    has to ask for it or guess it. Every push updates the same deployment at the same address.
+
+    - **You** check your feature where it runs, with the services and data it will meet after the merge.
+    - **Your teammates** review the merge request in four eyes and open the link next to it, so the review
+      covers the behaviour, not only the diff.
+    - **The business** follows the link and accepts the feature, or says early that it was meant differently.
+      Acceptance moves from the end of the sprint to the day the feature works.
+
+    The question "Can I see it?" is answered with a link, for every feature, every day.
+
+- section: cleanup
+  type: text
+  layout: one-col
+  headline: Gone with the branch
+  content: |
+    When the branch is merged or deleted, its deployment goes too: the release, the route, the namespace and
+    everything in it, removed by the pipeline. An expiry date catches whatever is left behind, and the
+    branch images are cleared from the registry after a while. A preview that nobody removes costs money and
+    makes the next person wonder whether it still matters.
+
+- section: continue
+  type: text
+  content: |
+    Next: [Discussion](/discussion)
+
+    [Back to the overview](/)

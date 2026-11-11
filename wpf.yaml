@@ -96,7 +96,8 @@ home:
     dont:
       4: >-
         Never run unit tests in or against a container that is already built. Once a container is built, it
-        can and will leak into the registry. Never build code that is invalid or untested.
+        can and will leak into the registry. Never build invalid or untested code into anything that looks
+        ready for production, not in CI and not locally.
 
   - section: introduction
     type: intro
@@ -379,6 +380,46 @@ home:
       contract and deploy minimally → develop in parallel → test against the contract → deploy the extension →
       repeat*.
 
+  - section: feature-branches
+    type: chapter
+    headline: Feature-branch deployments
+    drawing: parallel
+    content: |
+      Every feature runs at its own address before it is merged. [Read the chapter](/feature-branches)
+
+  - section: feature-visible
+    type: statement
+    headline: Every feature has a link
+    content: |
+      Every feature is visible to you, your teammates and the business before it is merged.
+
+  - section: branch-address
+    type: drawing
+    layout: right
+    drawing: network
+    headline: An address for every branch
+    content: |
+      Every push to a feature branch is tested, built and deployed into a space of its own, with an ingress
+      whose address comes from the branch name: `search-1234-search-button.feature.example.org`. A wildcard
+      record, a wildcard certificate and one shared entry point for the feature subdomain are set up once;
+      after that a new branch needs no ticket, and the login of the system keeps everyone else out.
+
+  - section: preview-lifecycle
+    type: steps
+    headline: From push to preview
+    content: |
+      The same pipeline as for the main line, with one difference at the end: the branch runs next to
+      production, not in it.
+
+      1. **Test first.** A branch that fails its tests or scans gets no deployment.
+      2. **Tag by branch.** The image carries the branch and the commit, so it is never mistaken for a release.
+      3. **Deploy into its own space.** A namespace per branch, with its own data stores and seeded test data;
+         other services are used in their main-line version.
+      4. **Give it an address.** A route under the feature subdomain, named after the branch, with TLS and
+         single sign-on from the first push.
+      5. **Post the link.** The address appears on the merge request, for the review and for the business.
+      6. **Remove it with the branch.** Merged or deleted, the deployment and everything in it is gone.
+
   - section: discussion
     type: chapter
     headline: Discussion
@@ -465,6 +506,8 @@ home:
       - [Synthesis](/synthesis): why the two approaches belong together.
       - [Implementation](/pipeline): the order of the stages, the rhythm of integration, hiding work in
         progress, releasing safely.
+      - [Feature-branch deployments](/feature-branches): an address for every branch, visible to the team and
+        the business, gone with the branch.
       - [Discussion](/discussion): benefits, objections, limits and the conclusion.
       - [Sources and further reading](/sources): every reference, and studies on the principle.
 

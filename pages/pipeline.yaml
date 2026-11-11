@@ -275,6 +275,6 @@
 - section: continue
   type: text
   content: |
-    Next: [Discussion](/discussion)
+    Next: [Feature-branch deployments](/feature-branches)
 
     [Back to the overview](/)
