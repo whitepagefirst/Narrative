@@ -92,8 +92,7 @@ home:
       7. **Let the running system speak.** The state of the project is a link, not a report.
     why:
       1: >-
-        Until a project can release, nothing it builds is of any use. Work that cannot reach production is
-        only inventory, so the way there comes first.
+        Until a project can release, everything it builds is wasted code, wasted time and wasted money.
 
   - section: introduction
     type: intro
